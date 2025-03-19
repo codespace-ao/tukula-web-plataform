@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/20/solid";
 import alface from "@/assets/images/products/alface.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 // Produtos alimentares ajustados para a Tukula
 const products = [
@@ -271,12 +272,13 @@ export default function Example() {
                         </dl>
 
                         <div className="mt-6">
-                            <button
+                            <Link
+                                href={"/marketplace/cart/checkout"}
                                 type="submit"
                                 className="w-full rounded-md border border-transparent bg-primary px-4 py-3 text-base font-medium text-white shadow-xs hover:bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden"
                             >
                                 Finalizar Compra
-                            </button>
+                            </Link>
                         </div>
                     </section>
                 </form>

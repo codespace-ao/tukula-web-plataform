@@ -11,7 +11,7 @@ export default function Successful() {
             <SucessfulForm
                 title="Parabéns!"
                 description="O seu contacto foi verificado."
-                label="Preencher perfil"
+                label="Explorar a Tukula"
                 action={(data) => {
                     console.log(data);
                     router.push("/auth/personal-data");

@@ -1,4 +1,4 @@
-import { loginSchema } from "@/validators/registerForm.validator";
+import { registerSchema } from "@/validators/registerForm.validator";
 import { ReusableForm } from "@/components/shared/authForm/authForm";
 import Input from "@/components/shared/input/input";
 import Button from "@/components/shared/button/button";
@@ -15,7 +15,7 @@ const RecoverCredentialsForm = () => {
             title="Recuperação"
             description="Hey, esqueceu a sua senha? Não faça pranto."
             onSubmit={handleSubmit}
-            schema={loginSchema}
+            schema={registerSchema}
         >
             <Input name="emailOrPhone" placeholder="E-mail ou telefone" />
 

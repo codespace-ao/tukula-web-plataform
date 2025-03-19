@@ -363,7 +363,10 @@ export default function ProductsSection() {
                                 Produtos
                             </h2>
 
-                            <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
+                            <Link
+                                href={"/marketplace/products/mk39j282md29"}
+                                className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3"
+                            >
                                 {products.map((product) => (
                                     <div
                                         key={product.id}
@@ -431,7 +434,7 @@ export default function ProductsSection() {
                                         </div>
                                     </div>
                                 ))}
-                            </div>
+                            </Link>
                         </section>
                     </div>
                 </main>
