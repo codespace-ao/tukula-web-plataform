@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/navbar/navbar";
 import teamDoddle from "@/assets/doddles/team.svg";
 import Image from "next/image";
 import Header from "@/components/layout/header/header";
