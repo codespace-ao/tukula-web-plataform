@@ -22,7 +22,6 @@ export const ReusableForm = <T extends Record<string, unknown>>({
     description,
     schema,
     children,
-    submitButtonText = "Enviar",
     className = "",
 }: ReusableFormProps<T>) => {
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -31,10 +30,7 @@ export const ReusableForm = <T extends Record<string, unknown>>({
         resolver: schema ? zodResolver(schema) : undefined,
     });
 
-    const {
-        handleSubmit,
-        formState: { isSubmitting },
-    } = methods;
+    const { handleSubmit } = methods;
 
     const handleFormSubmit = async (data: T) => {
         try {
