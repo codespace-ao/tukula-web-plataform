@@ -1,4 +1,4 @@
-import { Phone, Mail, Info } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
 const HeaderTop = () => {
     return (

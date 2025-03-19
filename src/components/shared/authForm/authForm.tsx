@@ -1,43 +1,83 @@
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ReactNode } from 'react';
+"use client";
 
-type FormData = Record<string, any>;
+import { useForm, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ReactNode, useState } from "react";
+import { z } from "zod";
 
-interface ReusableFormProps<T extends FormData> {
-  onSubmit?: (data: T) => void;
-  title: string;
-  description?: string;
-  schema?: any; 
-  defaultValues?: T;
-  children: ReactNode;
+//@typescript-eslint/no-explicit-any
+interface ReusableFormProps<T extends Record<string, unknown>> {
+    onSubmit: (data: T) => Promise<void> | void;
+    title: string;
+    description?: string;
+    schema?: z.ZodSchema<T>;
+    children: ReactNode;
+    submitButtonText?: string;
+    className?: string;
 }
 
-export const ReusableForm = <T extends FormData>({
-  onSubmit,
-  title,
-  description,
-  schema,
-  defaultValues = {} as T,
-  children,
+export const ReusableForm = <T extends Record<string, unknown>>({
+    onSubmit,
+    title,
+    description,
+    schema,
+    children,
+    submitButtonText = "Enviar",
+    className = "",
 }: ReusableFormProps<T>) => {
-  const methods = useForm<T>({
-    resolver: schema ? zodResolver(schema) : undefined,
-    defaultValues,
-  });
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const { handleSubmit } = methods;
+    const methods = useForm<T>({
+        resolver: schema ? zodResolver(schema) : undefined,
+    });
 
-  return (
-    <div className="bg-white rounded-[24px] shadow-md p-8 w-[425px]">
-      <h2 className="text-3xl font-bold mb-4 font-primary">{title}</h2>
-      {description && <p className="text-gray-600 font-regular mb-6">{description}</p>}
+    const {
+        handleSubmit,
+        formState: { isSubmitting },
+    } = methods;
 
-      <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit || (() => {}))} className="space-y-4" noValidate>
-          {children}
-        </form>
-      </FormProvider>
-    </div>
-  );
+    const handleFormSubmit = async (data: T) => {
+        try {
+            await onSubmit(data);
+            setSuccessMessage("Encomenda realizada com sucesso!");
+        } catch (error) {
+            console.error("Submission error:", error);
+            setSuccessMessage(null);
+        }
+    };
+
+    return (
+        <div
+            className={`bg-white rounded-[24px] shadow-md p-8 w-[425px] ${className}`}
+        >
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 font-primary">
+                {title}
+            </h2>
+            {description && (
+                <p className="text-gray-600 font-regular mb-6">{description}</p>
+            )}
+            {successMessage && (
+                <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-md">
+                    {successMessage}
+                </div>
+            )}
+
+            <FormProvider {...methods}>
+                <form
+                    onSubmit={handleSubmit(handleFormSubmit)}
+                    className="space-y-6"
+                    noValidate
+                >
+                    {children}
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed"
+                    >
+                        {isSubmitting ? "Enviando..." : submitButtonText}
+                    </button>
+                </form>
+            </FormProvider>
+        </div>
+    );
 };

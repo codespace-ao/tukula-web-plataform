@@ -1,6 +1,5 @@
 "use client";
 
-import { loginSchema } from "@/validators/registerForm.validator";
 import { ReusableForm } from "@/components/shared/authForm/authForm";
 import Image from "next/image";
 import Button from "@/components/shared/button/button";
@@ -13,10 +12,10 @@ interface IConfirmContactProps {
 }
 
 const RegisterForm = ({ email }: IConfirmContactProps) => {
-
     const router = useRouter();
 
     const handleGoBack = () => {
+        console.log(email);
         router.back();
     };
 
@@ -24,6 +23,7 @@ const RegisterForm = ({ email }: IConfirmContactProps) => {
         <ReusableForm
             title="Confirmação"
             description={`Enviamos um link para o contacto fornecido. Verifique sua caixa de entrada e clique no link para verificar.`}
+            onSubmit={() => {}}
         >
             <div className="w-full flex items-center justify-center">
                 <Image src={mail} alt="" width={200} height={200} />

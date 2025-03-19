@@ -4,21 +4,21 @@ import Button from "@/components/shared/button/button";
 import success from "@/assets/doddles/strategy.svg";
 import { ArrowRight } from "lucide-react";
 
-interface  ISuccessFormProps {
+interface ISuccessFormProps {
     title: string;
     description: string;
     label: string;
-    action: (data: FormData)=>void;
+    action: (data: Record<string, unknown>) => void;
 }
 
-const SucessfulForm = ({title, description, label, action}: ISuccessFormProps) => {
-
+const SucessfulForm = ({
+    title,
+    description,
+    label,
+    action,
+}: ISuccessFormProps) => {
     return (
-        <ReusableForm
-            title={title}
-            description={description}
-            onSubmit={action}
-        >
+        <ReusableForm title={title} description={description} onSubmit={action}>
             <div className="w-full flex items-center justify-center">
                 <Image src={success} alt="" width={400} height={400} />
             </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ReusableForm } from "@/components/shared/authForm/authForm";
 import Input from "@/components/shared/input/input";
@@ -7,7 +7,13 @@ import { ArrowRight } from "lucide-react";
 import { personalDataSchema } from "@/validators/personlData.validator";
 
 const PersonalDataForm = () => {
-    const handleSubmit = (data: { firstName: string; lastName: string; birthDate: string; gender: string; phone: string; }) => {
+    const handleSubmit = (data: {
+        firstName: string;
+        lastName: string;
+        birthDate: string;
+        gender: string;
+        phone: string;
+    }) => {
         console.log("personalData:", data);
     };
 
@@ -17,12 +23,15 @@ const PersonalDataForm = () => {
             description="Bem vindo! Vamos criar o seu perfil."
             onSubmit={handleSubmit}
             schema={personalDataSchema}
-            defaultValues={{ firstName: "", lastName: "", birthDate: "", gender: "", phone: "" }}
         >
-            
             <div className="flex gap-x-4 items-center justify-between">
-            <Input name="firstName" placeholder="Nome" className="!mb-0"/>
-            <Input name="lastName" type="text" placeholder="Sobrenome" className="!mb-0"/>
+                <Input name="firstName" placeholder="Nome" className="!mb-0" />
+                <Input
+                    name="lastName"
+                    type="text"
+                    placeholder="Sobrenome"
+                    className="!mb-0"
+                />
             </div>
             <Input name="birthDate" placeholder="Data de nascimento" />
             <Input name="gender" type="text" placeholder="Gênero" />
