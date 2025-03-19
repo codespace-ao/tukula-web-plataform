@@ -163,18 +163,18 @@ export default function ProductPage() {
                         </p>
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
-                            <button
-                                type="button"
+                            <Link
+                                href={"/marketplace/cart/checkout"}
                                 className="flex w-full items-center justify-center rounded-md border border-transparent bg-pr px-8 py-3 text-base font-medium text-white bg-primary focus:ring-2 focus:ring-pr focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden"
                             >
                                 Comprar por {product.price}
-                            </button>
-                            <button
-                                type="button"
+                            </Link>
+                            <Link
+                                href={"/marketplace/cart"}
                                 className="flex w-full items-center justify-center rounded-md border border-pr bg-white px-8 py-3 text-base font-medium text-pr hover:bg-orange-50 focus:ring-2 focus:ring-pr focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden"
                             >
                                 Adicionar ao Carrinho
-                            </button>
+                            </Link>
                         </div>
 
                         <div className="mt-10 border-t border-gray-200 pt-10">

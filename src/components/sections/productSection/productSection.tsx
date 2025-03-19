@@ -429,9 +429,12 @@ export default function ProductsSection() {
                                                 <ShoppingBagIcon className="h-5 w-5" />
                                             </button>
                                             {/* Botão "Comprar Agora" */}
-                                            <button className="flex-1 bg-primary text-white  py-2 rounded-full hover:bg-orange-50 transition-colors duration-200">
+                                            <Link
+                                                href={"/marketplace/cart"}
+                                                className="flex-1 bg-primary text-white  py-2 rounded-full hover:bg-orange-50 transition-colors duration-200"
+                                            >
                                                 Comprar Agora
-                                            </button>
+                                            </Link>
                                         </div>
                                     </Link>
                                 ))}
