@@ -368,7 +368,8 @@ export default function ProductsSection() {
                                 className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3"
                             >
                                 {products.map((product) => (
-                                    <div
+                                    <Link
+                                        href={"/marketplace/products/prodteste"}
                                         key={product.id}
                                         className="group relative flex flex-col overflow-hidden rounded-[22px] border border-gray-200 bg-white transition-all duration-200 hover:shadow-md"
                                     >
@@ -432,7 +433,7 @@ export default function ProductsSection() {
                                                 Comprar Agora
                                             </button>
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))}
                             </Link>
                         </section>
