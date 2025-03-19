@@ -300,7 +300,7 @@ export const Header = () => {
                 </div>
             </Dialog>
 
-            <header className="relative bg-white">
+            <header className="relative bg-white z-30">
                 <p className="flex h-10 items-center justify-center bg-primary px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
                     Participe da nossa missão para combater a fome e reduzir o
                     desperdício!

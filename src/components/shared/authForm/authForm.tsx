@@ -69,13 +69,6 @@ export const ReusableForm = <T extends Record<string, unknown>>({
                     noValidate
                 >
                     {children}
-                    <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed"
-                    >
-                        {isSubmitting ? "Enviando..." : submitButtonText}
-                    </button>
                 </form>
             </FormProvider>
         </div>

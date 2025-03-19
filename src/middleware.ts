@@ -12,11 +12,11 @@ export function middleware(req: NextRequest) {
     }
 
     if (pathname === "/") {
-        return NextResponse.redirect(new URL("/auth/login", req.url));
+        return NextResponse.redirect(new URL("/marketplace", req.url));
     }
 
     if (!token) {
-        if (pathname.startsWith("/marketplace")) {
+        if (pathname.startsWith("/marketplace/cart")) {
             return NextResponse.redirect(new URL("/auth/login", req.url));
         }
         return NextResponse.next();
