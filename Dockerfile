@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm install --legacy-peer-deps
 
-RUN npm install axios
+RUN npm install axios --legacy-peer-deps
 
 COPY . .
 
