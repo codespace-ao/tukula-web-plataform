@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@3.1.0
+
+    - name: Docker Login
+      uses: docker/login-action@v3.4.0
+      with:
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4
+      with: 
+        context: .
+        file: .
+        push: true
+        tags: |
+          codespace-ao/tukula-web-palataform:v1
+          codespace-ao/tukula-web-plataform:latest
+
+      
+    
+
+      
