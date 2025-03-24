@@ -3,6 +3,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import alface from "@/assets/images/products/alface.jpg";
 import Image from "next/image";
+import Link from 'next/link'
 
 // Ajustando o produto para o contexto da Tukula
 const product = {
