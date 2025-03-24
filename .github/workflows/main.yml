@@ -19,6 +19,6 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       
     - name: Build the Docker image
-      run: docker build -t codespace/tukula-web-plataform .
+      run: docker build -t codespaceroot/tukula-web-plataform .
     - name: Push to Dockerhub
-      run: docker push codespace/tukula-web-plataform:latest
+      run: docker push codespaceroot/tukula-web-plataform:latest
