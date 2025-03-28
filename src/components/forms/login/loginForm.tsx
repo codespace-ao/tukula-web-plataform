@@ -4,10 +4,27 @@ import Input from "@/components/shared/input/input";
 import Button from "@/components/shared/button/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import {useRouter} from 'next/navigation'
 
 const LoginForm = () => {
+    const router = useRouter()
     const handleSubmit = (data: { emailOrPhone: string; password: string }) => {
-        console.log("Login:", data);
+        const response = await fetch(
+                "https://api-tukula.onrender.com/api/v01/auth/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({email: data.emailOrPhone, password: data.password}),
+                }
+            );
+
+            if (!response.ok) {
+                alert("Failed to login");
+            }
+            router.push(`/`);
+            alert("Login successful");
     };
 
     return (
