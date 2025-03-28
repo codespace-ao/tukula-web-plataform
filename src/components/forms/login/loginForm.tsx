@@ -8,7 +8,7 @@ import {useRouter} from 'next/navigation'
 
 const LoginForm = () => {
     const router = useRouter()
-    const handleSubmit = (data: { emailOrPhone: string; password: string }) => {
+    const handleSubmit = async(data: { emailOrPhone: string; password: string }) => {
         const response = await fetch(
                 "https://api-tukula.onrender.com/api/v01/auth/login",
                 {
