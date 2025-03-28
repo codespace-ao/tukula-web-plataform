@@ -24,7 +24,7 @@ const LoginForm = () => {
             if (!response.ok) {
                 alert("Failed to login");
             }
-            Cookies.setItem('auth_token', 'aaaaaa')
+            Cookies.set('auth_token', 'aaaaaa')
             router.push(`/`);
             alert("Login successful");
     };
