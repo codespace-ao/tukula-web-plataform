@@ -5,6 +5,7 @@ import Button from "@/components/shared/button/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import {useRouter} from 'next/navigation'
+import Cookies from 'js-cookie'
 
 const LoginForm = () => {
     const router = useRouter()
@@ -23,6 +24,7 @@ const LoginForm = () => {
             if (!response.ok) {
                 alert("Failed to login");
             }
+            Cookies.setItem('auth_token', 'aaaaaa')
             router.push(`/`);
             alert("Login successful");
     };
